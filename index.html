@@ -1,0 +1,980 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Modul Peserta OfficeMart Hari 1</title>
+<meta name="description" content="Modul baca peserta Hari 1 Microsoft Excel for Professional (Intermediate): Excel Table, Data Validation, Hyperlink, Logical, Date, Text Cleaning, Lab Error, dan cheat sheet shortcut keyboard dengan studi kasus OfficeMart.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Modul Peserta OfficeMart Hari 1">
+<meta property="og:description" content="Modul baca peserta Hari 1 Microsoft Excel for Professional (Intermediate): Excel Table, Data Validation, Hyperlink, Logical, Date, Text Cleaning, Lab Error, dan cheat sheet shortcut keyboard dengan studi kasus OfficeMart.">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#17694F">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2317694F'/%3E%3Cpath d='M9 9l14 14M23 9L9 23' stroke='%23FFF0BF' stroke-width='3.5' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+/* reset dasar */
+:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,600;112,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: lembar kerja — indeks sesi menempel di kiri, setiap sesi = satu "sheet" dengan formula bar, sel kuning = tugas peserta */
+:root{
+  --paper:#F5F8F5; --surface:#FFFFFF; --ink:#14231D; --muted:#55665E; --line:#D3DDD7; --grid:#E6ECE8;
+  --green:#17694F; --green-ink:#FFFFFF; --green-soft:#E0EFE7;
+  --cell:#FFF0BF; --cell-ink:#5E4600; --bad:#B3261E; --bad-soft:#FBE4E1; --ok:#1B7A43; --ok-soft:#DDF3E5;
+  --f-display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0E1613; --surface:#15201B; --ink:#E4EDE8; --muted:#9AAEA5; --line:#2A3A33; --grid:#1B2822;
+  --green:#5BC597; --green-ink:#0B1A13; --green-soft:#173628;
+  --cell:#3A3217; --cell-ink:#F2D88A; --bad:#FF8C82; --bad-soft:#3A1D1A; --ok:#6FD69A; --ok-soft:#163423; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0E1613; --surface:#15201B; --ink:#E4EDE8; --muted:#9AAEA5; --line:#2A3A33; --grid:#1B2822;
+  --green:#5BC597; --green-ink:#0B1A13; --green-soft:#173628;
+  --cell:#3A3217; --cell-ink:#F2D88A; --bad:#FF8C82; --bad-soft:#3A1D1A; --ok:#6FD69A; --ok-soft:#163423; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;margin:0}
+.wrap{max-width:1140px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);font-stretch:112%;line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+code,.mono{font-family:var(--f-mono);font-size:.9em;overflow-wrap:break-word}
+.steps code,.traps code{overflow-wrap:anywhere}
+.two>*{min-width:0}
+a{color:var(--green)}
+:focus-visible{outline:2px solid var(--green);outline-offset:2px;border-radius:4px}
+
+/* ---------- hero ---------- */
+.hero{border-bottom:1px solid var(--line);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:96px 28px;background-position:-1px -1px}
+.hero .wrap{padding-block:48px 40px;display:grid;gap:22px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.hero h1{font-size:clamp(30px,5.4vw,54px);font-weight:800;max-width:18ch}
+.hero h1 em{font-style:normal;background:var(--cell);color:var(--cell-ink);padding:0 .18em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.lede{max-width:62ch;color:var(--muted);font-size:17px}
+.fx{display:flex;align-items:stretch;border:1px solid var(--line);background:var(--surface);border-radius:6px;overflow:hidden;max-width:760px}
+.fx .nb{font-family:var(--f-mono);font-size:13px;padding:10px 12px;border-right:1px solid var(--line);color:var(--muted);white-space:nowrap}
+.fx .ic{font-family:Georgia,serif;font-style:italic;padding:9px 12px;border-right:1px solid var(--line);color:var(--muted)}
+.fx .f{font-family:var(--f-mono);font-size:13.5px;padding:10px 12px;overflow-x:auto;white-space:nowrap;min-width:0;flex:1}
+.facts{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:14px;color:var(--muted)}
+.facts b{color:var(--ink);font-weight:600}
+
+/* ---------- layout ---------- */
+.layout{display:grid;grid-template-columns:210px minmax(0,1fr);gap:40px;padding-block:36px 72px}
+.index{position:sticky;top:calc(env(safe-area-inset-top,0px) + 20px);align-self:start;display:grid;gap:2px}
+.index .eyebrow{margin-bottom:8px}
+.index a{display:grid;grid-template-columns:44px 1fr;gap:6px;text-decoration:none;color:var(--muted);font-size:14px;padding:6px 8px;border-radius:5px;line-height:1.3}
+.index a span:first-child{font-family:var(--f-mono);font-size:12px;padding-top:1px}
+.index a:hover{background:var(--green-soft);color:var(--ink)}
+.index a.on{background:var(--green);color:var(--green-ink)}
+main{display:grid;grid-template-columns:minmax(0,1fr);gap:56px;min-width:0}
+@media (max-width:860px){
+  .layout{grid-template-columns:minmax(0,1fr);gap:20px;padding-top:0}
+  .index{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);display:flex;overflow-x:auto;gap:4px;padding-block:10px;border-bottom:1px solid var(--line);margin-inline:calc(-1*max(16px,env(safe-area-inset-left,0px)));padding-inline:max(16px,env(safe-area-inset-left,0px))}
+  .index .eyebrow{display:none}
+  .index a{display:block;white-space:nowrap;border:1px solid var(--line);background:var(--surface)}
+  .index a span:last-child{display:none}
+  .index a.solo span:first-child{display:none}
+  .index a.solo span:last-child{display:inline}
+  body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+}
+
+/* ---------- generic blocks ---------- */
+.block-title{font-size:13px;font-family:var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:20px}
+.tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--grid);vertical-align:top}
+th{font-weight:600;background:var(--green);color:var(--green-ink);font-size:13px;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td.t{font-family:var(--f-mono);font-size:13px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.pill{display:inline-block;font-family:var(--f-mono);font-size:12px;padding:1px 8px;border-radius:99px;white-space:nowrap}
+.pill.ok{background:var(--ok-soft);color:var(--ok)} .pill.bad{background:var(--bad-soft);color:var(--bad)} .pill.in{background:var(--cell);color:var(--cell-ink)}
+
+/* ---------- intro ---------- */
+.intro{display:grid;gap:20px}
+.legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.lg{display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start;font-size:14px}
+.sw{width:28px;height:22px;border:1px solid var(--line);border-radius:3px}
+.note{font-size:14px;color:var(--muted);border-top:1px dashed var(--line);padding-top:12px}
+.agenda td:nth-child(2){font-weight:600}
+.agenda tr.brk td{color:var(--muted);background:var(--paper);font-style:italic}
+
+/* ---------- session ---------- */
+.session{display:grid;grid-template-columns:minmax(0,1fr);gap:22px;scroll-margin-top:24px}
+@media (max-width:860px){.session{scroll-margin-top:70px}}
+.s-head{display:grid;gap:8px;border-top:3px solid var(--ink);padding-top:16px}
+.s-meta{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-family:var(--f-mono);font-size:13px;color:var(--muted)}
+.s-meta .sheet{background:var(--green-soft);color:var(--green);padding:2px 8px;border-radius:4px}
+.s-head h2{font-size:clamp(24px,3.4vw,34px);font-weight:800}
+.s-head p{max-width:64ch;color:var(--muted);font-size:17px}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+@media (max-width:760px){.two{grid-template-columns:1fr}}
+.lo{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.lo li{display:grid;grid-template-columns:22px 1fr;gap:8px;font-size:15px}
+.lo li::before{content:"✓";font-weight:700;color:var(--green)}
+.case{background:var(--cell);color:var(--cell-ink);border-radius:8px;padding:20px;display:grid;gap:10px;align-content:start}
+.case .block-title{color:var(--cell-ink);opacity:.8;margin:0}
+.case h3{font-size:18px;font-weight:600;font-stretch:100%}
+.case p{font-size:15px}
+.case .kbi{border-top:1px dashed currentColor;padding-top:10px;font-size:14px}
+.concept{max-width:68ch;font-size:16px}
+.concept strong{font-weight:600}
+.formulas{display:grid;gap:12px}
+.fm{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--surface)}
+.fm .fx{border:0;border-bottom:1px solid var(--line);border-radius:0;max-width:none}
+.fm .ex{padding:10px 14px;font-size:14.5px;color:var(--muted)}
+.fm .ex b{color:var(--ink);font-weight:600}
+.steps{margin:0;padding-left:22px;display:grid;gap:8px;font-size:15px}
+.steps li::marker{font-family:var(--f-mono);color:var(--green);font-weight:500}
+.traps{display:grid;gap:10px}
+.trap{display:grid;grid-template-columns:auto 1fr;gap:12px;font-size:15px;align-items:baseline}
+.trap .pill{min-width:58px;text-align:center}
+
+/* ---------- demos ---------- */
+.demo{border:1px solid var(--green);border-radius:8px;background:var(--surface);overflow:hidden}
+.demo-h{background:var(--green-soft);padding:10px 16px;font-weight:600;font-size:14px;color:var(--green);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.demo-b{padding:16px;display:grid;gap:14px}
+.field{display:grid;gap:4px;font-size:13px;color:var(--muted)}
+input,select{font:inherit;font-size:15px;color:var(--ink);background:var(--cell);border:1px solid var(--line);border-radius:5px;padding:7px 10px;min-width:0;width:100%}
+.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.chars{display:flex;flex-wrap:wrap;gap:3px}
+.ch{display:grid;text-align:center;font-family:var(--f-mono);border:1px solid var(--line);border-radius:3px;min-width:28px;background:var(--paper)}
+.ch b{font-size:15px;padding:3px 4px 1px;font-weight:500}
+.ch i{font-style:normal;font-size:10px;color:var(--muted);border-top:1px solid var(--grid);padding:1px 2px}
+.ch.pipe{background:var(--ink);color:var(--paper)} .ch.pipe i{color:var(--paper);opacity:.75}
+.ch.seg{background:var(--cell);color:var(--cell-ink)}
+.out{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.out div{border:1px solid var(--line);border-radius:6px;padding:10px 12px;font-size:13px;color:var(--muted);display:grid;gap:2px}
+.out div b{font-family:var(--f-mono);font-size:15px;color:var(--ink);font-weight:500;word-break:break-all}
+
+/* ---------- quiz ---------- */
+.quiz{display:grid;gap:8px}
+.q{border:1px solid var(--line);border-radius:8px;background:var(--surface);padding:14px 16px;display:grid;gap:10px}
+.q p{font-weight:500}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opts button{font:inherit;font-size:14px;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:5px;padding:6px 12px;cursor:pointer}
+.opts button:hover{border-color:var(--green)}
+.opts button.right{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.opts button.wrong{background:var(--bad-soft);border-color:var(--bad);color:var(--bad)}
+.score{font-family:var(--f-mono);font-size:14px;color:var(--muted)}
+
+/* ---------- cheat sheet ---------- */
+kbd{font-family:var(--f-mono);font-size:12px;display:inline-block;min-width:24px;text-align:center;padding:2px 6px;border:1px solid var(--line);border-bottom-width:3px;border-radius:5px;background:var(--surface);color:var(--ink);line-height:1.4;white-space:nowrap}
+.kplus{color:var(--muted);font-size:12px;margin:0 3px}
+.kb-panel{position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px);z-index:3;background:var(--paper);padding-bottom:6px}
+@media (max-width:860px){.kb-panel{position:static}}
+.kb-cap{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;min-height:44px;padding:10px 14px;background:var(--green);color:var(--green-ink);border-radius:8px 8px 0 0;font-size:15px}
+.kb-cap kbd{background:var(--green-ink);color:var(--green);border-color:var(--green-ink)}
+.kb-cap .kplus{color:var(--green-ink)}
+.kb-scroll{overflow-x:auto;border:1px solid var(--line);border-top:0;border-radius:0 0 8px 8px;background:var(--surface)}
+.kb{display:flex;gap:14px;padding:14px;font-size:11px;width:max-content}
+.kb-main,.kb-side{display:grid;gap:4px;align-content:start}
+.kb-row{display:flex;gap:4px}
+.kb-row.fn{margin-bottom:6px}
+.key{--u:34px;height:32px;width:calc(var(--u)*var(--w,1) + 4px*(var(--w,1) - 1));display:grid;place-items:center;font-family:var(--f-mono);font-size:11px;color:var(--muted);background:var(--paper);border:1px solid var(--line);border-bottom-width:3px;border-radius:5px;transition:background .15s,color .15s,transform .15s}
+.key.gap{visibility:hidden}
+.key.on{background:var(--cell);color:var(--cell-ink);border-color:var(--cell-ink);font-weight:500;transform:translateY(1px)}
+.kb-side .kb-row{justify-content:center}
+@media (prefers-reduced-motion:reduce){.key{transition:none}}
+.sc-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.sc-group{background:var(--surface);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.sc-group h3{font-size:15px;font-weight:600;font-stretch:100%;padding:10px 14px;border-bottom:1px solid var(--line);background:var(--green-soft);color:var(--green)}
+.sc{display:grid;grid-template-columns:minmax(0,auto) minmax(0,1fr);gap:4px 12px;align-items:center;width:100%;text-align:left;font:inherit;font-size:14px;color:var(--ink);background:none;border:0;border-bottom:1px solid var(--grid);padding:9px 14px;cursor:pointer}
+.sc:last-child{border-bottom:0}
+.sc:hover,.sc.on{background:var(--cell);color:var(--cell-ink)}
+.sc .keys{white-space:nowrap}
+@media (max-width:420px){.sc{grid-template-columns:1fr}}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.fcard{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px;display:grid;gap:8px;align-content:start}
+.fcard h3{font-size:14px;font-family:var(--f-mono);font-stretch:100%;font-weight:500;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.fcard dl{margin:0;display:grid;gap:8px}
+.fcard dt{font-family:var(--f-mono);font-size:13px;color:var(--green);font-weight:500;overflow-wrap:anywhere}
+.fcard dd{margin:0;font-size:14px;color:var(--muted)}
+.f4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+@media (max-width:560px){.f4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.f4 div{border:1px solid var(--line);border-radius:6px;padding:10px;background:var(--surface);display:grid;gap:2px;font-size:13px;color:var(--muted)}
+.f4 b{font-family:var(--f-mono);font-size:18px;color:var(--ink);font-weight:500}
+footer{border-top:1px solid var(--line);padding-block:24px 40px;color:var(--muted);font-size:13px}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Microsoft Excel for Professional · Intermediate · PT Kliring Berjangka Indonesia</div>
+    <h1>Hari 1: rapikan data, buat navigasi, biarkan <em>rumus yang memutuskan</em></h1>
+    <p class="lede">Modul baca untuk peserta. Kita bekerja dengan 300 pesanan OfficeMart, distributor fiktif perlengkapan kantor &amp; layanan TI. Polanya sama dengan pekerjaan Anda sehari-hari: data masuk berantakan, harus dicek, diberi status, lalu dilaporkan.</p>
+    <div class="fx" aria-label="Contoh formula bar">
+      <span class="nb">K57</span><span class="ic">fx</span>
+      <span class="f">=IF(OR(D57&gt;15%;AND(G57&lt;&gt;"";G57&gt;F57));"Periksa";"OK")</span>
+    </div>
+    <div class="facts">
+      <span><b>09.00 – 15.00</b> · 6 sesi + closing</span>
+      <span><b>68 soal</b> dinilai otomatis ✔</span>
+      <span><b>File:</b> OfficeMart_Hari1_ExcelIntermediateKBI</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap layout">
+  <nav class="index" aria-label="Daftar sesi">
+    <div class="eyebrow">Isi modul</div>
+    <a href="#mulai" class="solo"><span aria-hidden="true">▶</span><span>Mulai di sini</span></a>
+    <a href="#s1"><span>S1</span><span>Excel Table &amp; Data Validation</span></a>
+    <a href="#s2"><span>S2</span><span>Hyperlink &amp; Navigasi</span></a>
+    <a href="#s3"><span>S3</span><span>Logical Formula</span></a>
+    <a href="#s4"><span>S4</span><span>Date &amp; Time</span></a>
+    <a href="#s5"><span>S5</span><span>Text Cleaning &amp; CF</span></a>
+    <a href="#s6"><span>S6</span><span>Lab Error</span></a>
+    <a href="#cheatsheet" class="solo"><span aria-hidden="true">⌨</span><span>Cheat Sheet</span></a>
+    <a href="#closing" class="solo"><span aria-hidden="true">✓</span><span>Closing &amp; Post-test</span></a>
+  </nav>
+
+  <main>
+    <!-- ============ MULAI ============ -->
+    <section class="session intro" id="mulai">
+      <div class="s-head">
+        <div class="s-meta"><span class="sheet">Menu · Petunjuk</span></div>
+        <h2>Mulai di sini</h2>
+        <p>Lima menit untuk memahami cara kerja file. Setelah itu Anda bisa mengerjakan semua latihan sendiri, dan Excel akan memberi tahu jawaban yang sudah benar.</p>
+      </div>
+
+      <div class="panel">
+        <div class="block-title">Arti warna sel di file latihan</div>
+        <div class="legend">
+          <div class="lg"><span class="sw" style="background:var(--cell)"></span><span><b>Kuning</b>: sel yang Anda isi, berupa rumus atau pilihan dropdown.</span></div>
+          <div class="lg"><span class="sw" style="background:var(--green-soft)"></span><span><b>Hijau</b>: contoh yang sudah jadi. Tiru rumusnya, lalu copy ke bawah.</span></div>
+          <div class="lg"><span class="sw" style="background:var(--grid)"></span><span><b>Abu</b>: referensi dan parameter. Jangan diubah.</span></div>
+          <div class="lg"><span class="sw" style="background:var(--bad-soft)"></span><span><b>Merah muda</b>: sel rusak di Lab_Error atau data duplikat.</span></div>
+        </div>
+        <p class="note" style="margin-top:14px">Kolom <span class="pill ok">✔ Benar</span> / <span class="pill bad">✘ Cek lagi</span> menilai otomatis, dan tetap kosong selama baris itu belum diisi. Contoh di file memakai koma sebagai pemisah. Laptop dengan pengaturan regional Indonesia memakai <b>titik koma (;)</b>, seperti semua rumus di modul ini.</p>
+      </div>
+
+      <div>
+        <div class="block-title">Agenda hari ini</div>
+        <div class="tblwrap">
+          <table class="agenda">
+            <thead><tr><th>Waktu</th><th>Sesi</th><th>Materi</th><th>Skor</th></tr></thead>
+            <tbody>
+              <tr><td class="t">09.00–09.20</td><td>Opening</td><td>Tujuan training &amp; pre-test 8 soal</td><td class="t">8</td></tr>
+              <tr><td class="t">09.20–10.00</td><td>Session 1</td><td>Excel Table, structured reference, Data Validation</td><td class="t">9</td></tr>
+              <tr><td class="t">10.00–10.30</td><td>Session 2</td><td>HYPERLINK, menu sheet, tombol tanpa VBA</td><td class="t">4</td></tr>
+              <tr class="brk"><td class="t">10.30–10.45</td><td>Ice Breaking</td><td>Snack &amp; Excel Quiz Challenge</td><td></td></tr>
+              <tr><td class="t">10.45–11.25</td><td>Session 3</td><td>IF, AND/OR, IFS, IFERROR, IFNA</td><td class="t">19</td></tr>
+              <tr><td class="t">11.25–12.00</td><td>Session 4</td><td>TODAY, EOMONTH, NETWORKDAYS, WEEKDAY, TEXT</td><td class="t">10</td></tr>
+              <tr class="brk"><td class="t">12.00–13.00</td><td>Lunch Break</td><td></td><td></td></tr>
+              <tr><td class="t">13.00–13.40</td><td>Session 5</td><td>TEXTSPLIT/LEFT-MID-FIND, SUBSTITUTE, PROPER, TEXTJOIN, Conditional Formatting</td><td class="t">14</td></tr>
+              <tr><td class="t">13.40–14.10</td><td>Session 6</td><td>Lab: #VALUE!, #NAME?, hyperlink rusak</td><td class="t">4</td></tr>
+              <tr><td class="t">14.10–14.45</td><td>Closing</td><td>Hands-on integrasi 12 pesanan</td><td class="t">12</td></tr>
+              <tr><td class="t">14.45–15.00</td><td>Review</td><td>Post-test &amp; QnA</td><td class="t">8</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div>
+        <div class="block-title">Aturan bisnis OfficeMart yang dipakai seharian</div>
+        <div class="tblwrap">
+          <table>
+            <thead><tr><th>Aturan</th><th>Isi kebijakan</th><th>Dipakai di</th></tr></thead>
+            <tbody>
+              <tr><td>Nilai Bersih</td><td>Jumlah × Harga Satuan × (1 − Diskon)</td><td class="t">S1, Closing</td></tr>
+              <tr><td>Kategori nilai</td><td>Kecil &lt; Rp5 jt · Sedang Rp5–25 jt · Besar &gt; Rp25 jt</td><td class="t">S3</td></tr>
+              <tr><td>Wajib persetujuan</td><td>Pesanan Besar harus berstatus <i>Disetujui</i> sebelum dikirim</td><td class="t">S3</td></tr>
+              <tr><td>Perlu diperiksa</td><td>Diskon &gt; 15% <b>atau</b> dikirim melewati target</td><td class="t">S3</td></tr>
+              <tr><td>Diskon valid</td><td>0% – 20%. Jumlah harus bilangan bulat &gt; 0</td><td class="t">S1</td></tr>
+              <tr><td>Jatuh tempo</td><td>Tanggal kirim + 30 hari kalender</td><td class="t">S4</td></tr>
+              <tr><td>Tanggal acuan</td><td>30-Jun-2026, pengganti TODAY() agar jawaban bisa dicek</td><td class="t">S4, S5</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ S1 ============ -->
+    <section class="session" id="s1">
+      <div class="s-head">
+        <div class="s-meta"><span>Session 1 · 09.20 – 10.00</span><span class="sheet">Latihan_H1 · Data_Bersih</span></div>
+        <h2>Excel Table &amp; Data Validation</h2>
+        <p>Data yang rapi dimulai saat diketik. Table membuat rumus mengikuti data dengan sendirinya, sedangkan Data Validation mencegah input yang salah sejak awal.</p>
+      </div>
+      <div class="two">
+        <div class="panel">
+          <div class="block-title">Setelah sesi ini Anda bisa</div>
+          <ul class="lo">
+            <li>Mengubah range menjadi Excel Table (Ctrl+T) lalu memberi nama tabel, misalnya tblPesanan.</li>
+            <li>Menulis rumus dengan structured reference yang langsung terisi untuk 300 baris.</li>
+            <li>Membuat dropdown dari Master dan membatasi angka (bilangan bulat, rentang persen).</li>
+            <li>Menjelaskan mengapa validasi di awal lebih murah daripada membersihkan data di akhir.</li>
+          </ul>
+        </div>
+        <div class="case">
+          <div class="block-title">Studi kasus</div>
+          <h3>Satu cabang mengetik "Jakarta", cabang lain "JKT"</h3>
+          <p>Admin lima cabang OfficeMart menginput pesanan dengan caranya masing-masing. Saat direkap, Jakarta terbagi jadi dua baris, diskon tertulis "15" (seharusnya 15%), dan ada jumlah barang minus. Laporan ke manajemen jadi salah sebelum ada yang menganalisisnya.</p>
+          <p class="kbi"><b>Di kantor Anda:</b> form input data peserta training, daftar vendor, atau log dokumen. Dropdown divisi dan status membuat rekap dengan COUNTIFS akurat tanpa perlu cleaning ulang.</p>
+        </div>
+      </div>
+      <p class="concept"><strong>Konsepnya:</strong> range biasa hanyalah kumpulan sel, sedangkan Table adalah data yang "hidup". Table otomatis melebar saat baris baru ditambah, punya filter dan banded rows, dan rumus cukup ditulis sekali. Data Validation adalah penjaga pintu: input yang tidak sesuai aturan ditolak lewat pesan Error Alert.</p>
+      <div>
+        <div class="block-title">Rumus kunci</div>
+        <div class="formulas">
+          <div class="fm"><div class="fx"><span class="nb">F9</span><span class="ic">fx</span><span class="f">=C9*D9*(1-E9)</span></div>
+            <p class="ex"><b>Nilai Bersih.</b> Qty × Harga menghasilkan subtotal. <code>(1−Diskon)</code> adalah porsi yang tetap dibayar: diskon 15% berarti pelanggan membayar 0,85 dari harga.</p></div>
+          <div class="fm"><div class="fx"><span class="nb">U6</span><span class="ic">fx</span><span class="f">=[@Jumlah]*[@[Harga Satuan]]*(1-[@[Diskon Persen]])</span></div>
+            <p class="ex"><b>Structured reference.</b> <code>[@Kolom]</code> artinya "kolom ini, di baris ini". Rumus jadi mudah dibaca dan otomatis terisi ke seluruh Table.</p></div>
+          <div class="fm"><div class="fx"><span class="nb">DV</span><span class="ic">fx</span><span class="f">List → Source: =Master!$B$6:$B$10   ·   Whole number &gt; 0   ·   Decimal 0 – 0,2</span></div>
+            <p class="ex"><b>Data ▸ Data Validation.</b> Dropdown mengambil kode cabang dari Master. Kolom Jumlah hanya menerima bilangan bulat positif, dan Diskon hanya 0–20%.</p></div>
+        </div>
+      </div>
+      <div class="two">
+        <div>
+          <div class="block-title">Langkah di file</div>
+          <ol class="steps">
+            <li>Buka Data_Bersih, klik A7, tekan <b>Ctrl+T</b>, lalu beri nama tblPesanan.</li>
+            <li>Tambah kolom U "Nilai Bersih" dengan structured reference.</li>
+            <li>Di Latihan_H1, hitung 10 Nilai Bersih (target 9 ✔).</li>
+            <li>Isi 5 pesanan baru lewat dropdown. Coba ketik "Jakarta", maka Error Alert muncul.</li>
+            <li>Buat sendiri DV untuk kolom Jumlah dan Diskon di Data_Bersih.</li>
+          </ol>
+        </div>
+        <div>
+          <div class="block-title">Jebakan umum</div>
+          <div class="traps">
+            <div class="trap"><span class="pill bad">Salah</span><span>Diskon diketik <code>15</code>, sehingga (1−15) = −14 dan totalnya minus. Yang benar <code>15%</code> atau <code>0,15</code>.</span></div>
+            <div class="trap"><span class="pill bad">Salah</span><span><code>=C9*D9*1-E9</code> tanpa kurung. Excel mengerjakan perkalian dulu, jadi hasilnya salah.</span></div>
+            <div class="trap"><span class="pill ok">Tips</span><span>DV hanya menolak input baru. Data lama yang sudah salah bisa dicari lewat Data ▸ Data Validation ▸ <i>Circle Invalid Data</i>.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ S2 ============ -->
+    <section class="session" id="s2">
+      <div class="s-head">
+        <div class="s-meta"><span>Session 2 · 10.00 – 10.30</span><span class="sheet">Latihan_H1 · Menu</span></div>
+        <h2>Hyperlink &amp; Navigasi Workbook</h2>
+        <p>File dengan banyak sheet terasa seperti aplikasi jika setiap halaman bisa dibuka dengan satu klik. Semua ini bisa dibuat tanpa makro.</p>
+      </div>
+      <div class="two">
+        <div class="panel">
+          <div class="block-title">Setelah sesi ini Anda bisa</div>
+          <ul class="lo">
+            <li>Membuat tautan ke sheet lain dengan format yang benar: tanda # dan kutip tunggal.</li>
+            <li>Membuat tombol dari Shape lewat Link ▸ Place in This Document.</li>
+            <li>Menyusun sheet Menu dan tautan "◀ Kembali ke Menu" di setiap sheet.</li>
+          </ul>
+        </div>
+        <div class="case">
+          <div class="block-title">Studi kasus</div>
+          <h3>Laporan bulanan 12 sheet, atasan hanya sempat 2 menit</h3>
+          <p>Store manager OfficeMart membuka file rekap dan kebingungan mencari sheet di deretan tab bawah. Dengan Menu berisi tombol ke Data, Master, Kalender, dan Laporan, semua orang langsung tahu harus klik ke mana.</p>
+          <p class="kbi"><b>Di kantor Anda:</b> workbook laporan SDM (absensi, payroll, KPI) atau file monitoring operasional yang dibuka oleh banyak divisi.</p>
+        </div>
+      </div>
+      <div>
+        <div class="block-title">Rumus kunci</div>
+        <div class="formulas">
+          <div class="fm"><div class="fx"><span class="nb">D41</span><span class="ic">fx</span><span class="f">=HYPERLINK("#'Data_Bersih'!A1";"▶ Data Bersih")</span></div>
+            <p class="ex"><b><code>#</code></b> menandakan tujuan ada di file yang sama. <b>Kutip tunggal</b> membungkus nama sheet (wajib jika ada spasi). <b>Argumen kedua</b> adalah teks tombol yang terlihat.</p></div>
+        </div>
+      </div>
+      <div class="two">
+        <div>
+          <div class="block-title">Langkah di file</div>
+          <ol class="steps">
+            <li>Isi 4 rumus HYPERLINK di Latihan_H1 (target 4 ✔), lalu klik untuk menguji.</li>
+            <li>Di Menu, tambahkan Shape "Mulai Latihan", klik kanan, pilih Link ▸ Place in This Document ▸ Latihan_H1.</li>
+            <li>Tambahkan "◀ Kembali ke Menu" di B1 sheet Data_Mentah.</li>
+          </ol>
+        </div>
+        <div>
+          <div class="block-title">Jebakan umum</div>
+          <div class="traps">
+            <div class="trap"><span class="pill bad">Salah</span><span>Nama sheet di rumus berbeda satu karakter (<code>Data Bersih</code> dan <code>Data_Bersih</code>). Akibatnya muncul "Reference isn't valid".</span></div>
+            <div class="trap"><span class="pill ok">Tips</span><span>Sheet yang di-rename tidak ikut memperbarui teks di HYPERLINK. Cek ulang semua tombol setiap kali struktur file berubah.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ S3 ============ -->
+    <section class="session" id="s3">
+      <div class="s-head">
+        <div class="s-meta"><span>Session 3 · 10.45 – 11.25</span><span class="sheet">Latihan_H1</span></div>
+        <h2>Logical Formula: IF, AND/OR, IFS, IFERROR, IFNA</h2>
+        <p>Aturan bisnis yang biasanya dicek dengan mata bisa diubah menjadi rumus. Hasilnya konsisten di 300 baris dan tidak bergantung pada siapa yang mengerjakan.</p>
+      </div>
+      <div class="two">
+        <div class="panel">
+          <div class="block-title">Setelah sesi ini Anda bisa</div>
+          <ul class="lo">
+            <li>Mengubah kebijakan tertulis menjadi IF dengan dua hasil.</li>
+            <li>Menggabungkan syarat: AND (semua harus benar) dan OR (cukup satu yang benar).</li>
+            <li>Mengelompokkan nilai bertingkat dengan IFS, atau IF bersarang di Excel lama.</li>
+            <li>Mengganti tampilan error dengan IFERROR dan IFNA, serta tahu kapan memakai masing-masing.</li>
+          </ul>
+        </div>
+        <div class="case">
+          <div class="block-title">Studi kasus</div>
+          <h3>Pesanan Rp34,5 juta hampir dikirim tanpa persetujuan</h3>
+          <p>PO-2026-0264 bernilai Rp34,5 juta masih berstatus <i>Menunggu</i>, padahal kebijakan mewajibkan pesanan di atas Rp25 juta disetujui sebelum dikirim. Rumus AND langsung menandainya "Ya" sehingga gudang tahu untuk menahan pengiriman.</p>
+          <p class="kbi"><b>Di kantor Anda:</b> matriks approval berdasarkan nilai transaksi, eligibility bonus (status tetap DAN kehadiran ≥ 90%), atau flag data yang perlu ditinjau ulang.</p>
+        </div>
+      </div>
+      <div>
+        <div class="block-title">Rumus kunci</div>
+        <div class="formulas">
+          <div class="fm"><div class="fx"><span class="nb">I57</span><span class="ic">fx</span><span class="f">=IF(H57&lt;&gt;"";"Lunas";"Belum")</span></div>
+            <p class="ex"><b>IF:</b> jika tanggal bayar terisi, hasilnya Lunas. Jika kosong, Belum.</p></div>
+          <div class="fm"><div class="fx"><span class="nb">J57</span><span class="ic">fx</span><span class="f">=IF(AND(C57&gt;25000000;E57&lt;&gt;"Disetujui");"Ya";"Tidak")</span></div>
+            <p class="ex"><b>AND:</b> bernilai "Ya" hanya jika nilainya besar <i>dan</i> belum disetujui.</p></div>
+          <div class="fm"><div class="fx"><span class="nb">K57</span><span class="ic">fx</span><span class="f">=IF(OR(D57&gt;0,15;AND(G57&lt;&gt;"";G57&gt;F57));"Periksa";"OK")</span></div>
+            <p class="ex"><b>OR:</b> diskon di atas 15% <i>atau</i> terlambat kirim sudah cukup untuk diperiksa. AND di dalamnya mencegah baris yang belum dikirim ikut dianggap terlambat.</p></div>
+          <div class="fm"><div class="fx"><span class="nb">L57</span><span class="ic">fx</span><span class="f">=IFS(C57&lt;5000000;"Kecil";C57&lt;=25000000;"Sedang";TRUE;"Besar")</span></div>
+            <p class="ex"><b>IFS</b> memeriksa syarat dari atas ke bawah dan berhenti di syarat pertama yang benar. <code>TRUE</code> di akhir berarti "selain itu". Jika rumus tampil dengan <code>=@IFS(…)</code>, tanda @ aman dihapus.</p></div>
+          <div class="fm"><div class="fx"><span class="nb">H73</span><span class="ic">fx</span><span class="f">=IFNA(VLOOKUP(G73;Master!$P$6:$R$25;2;FALSE);"Kode tidak ditemukan")</span></div>
+            <p class="ex"><b>IFNA</b> hanya menangkap #N/A (data tidak ditemukan). <b>IFERROR</b> menangkap semua jenis error, termasuk salah ketik rumus, sehingga kesalahan Anda sendiri bisa tersembunyi. Untuk lookup, pilih IFNA.</p></div>
+        </div>
+      </div>
+
+      <div class="demo" id="demo-logic">
+        <div class="demo-h"><span>Coba sendiri: satu pesanan, empat keputusan</span><span class="mono">aturan OfficeMart</span></div>
+        <div class="demo-b">
+          <div class="fields">
+            <label class="field" for="lg-nilai">Nilai Bersih (Rp)<input id="lg-nilai" type="number" value="34500000" step="500000" min="0"></label>
+            <label class="field" for="lg-disk">Diskon (%)<input id="lg-disk" type="number" value="0" min="0" max="20"></label>
+            <label class="field" for="lg-status">Status<select id="lg-status"><option>Menunggu</option><option>Disetujui</option><option>Ditolak</option></select></label>
+            <label class="field" for="lg-telat">Kirim vs target<select id="lg-telat"><option value="belum">Belum dikirim</option><option value="tepat">Tepat waktu</option><option value="telat">Terlambat</option></select></label>
+            <label class="field" for="lg-bayar">Tanggal bayar<select id="lg-bayar"><option value="">Kosong</option><option value="ada">Terisi</option></select></label>
+          </div>
+          <div class="out" aria-live="polite">
+            <div>Lunas? (IF)<b id="o-lunas"></b></div>
+            <div>Besar belum disetujui (AND)<b id="o-and"></b></div>
+            <div>Perlu periksa (OR)<b id="o-or"></b></div>
+            <div>Kategori (IFS)<b id="o-ifs"></b></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ S4 ============ -->
+    <section class="session" id="s4">
+      <div class="s-head">
+        <div class="s-meta"><span>Session 4 · 11.25 – 12.00</span><span class="sheet">Latihan_H1 · Kalender_Latihan</span></div>
+        <h2>Date &amp; Time: TODAY, EOMONTH, NETWORKDAYS, WEEKDAY, TEXT</h2>
+        <p>Di Excel, tanggal adalah angka (1 hari = 1). Karena itu tanggal bisa dikurangkan, dijumlahkan, dan dibandingkan seperti angka biasa.</p>
+      </div>
+      <div class="two">
+        <div class="panel">
+          <div class="block-title">Setelah sesi ini Anda bisa</div>
+          <ul class="lo">
+            <li>Menghitung umur tagihan dengan TODAY() atau tanggal acuan tetap.</li>
+            <li>Mencari akhir bulan (EOMONTH) untuk periode tutup buku.</li>
+            <li>Menghitung hari kerja dengan mengecualikan akhir pekan dan daftar libur.</li>
+            <li>Menandai akhir pekan (WEEKDAY) dan membuat label periode (TEXT).</li>
+            <li>Mengamankan tanggal kosong agar tidak muncul angka seperti 46.203.</li>
+          </ul>
+        </div>
+        <div class="case">
+          <div class="block-title">Studi kasus</div>
+          <h3>Tim finance perlu daftar tagihan yang sudah lewat jatuh tempo</h3>
+          <p>Per 30 Juni 2026, berapa hari setiap tagihan yang belum dibayar sudah lewat jatuh tempo? Berapa hari kerja dari pesanan masuk sampai barang dikirim, dibandingkan SLA? Kedua jawaban ini diperlukan setiap akhir bulan.</p>
+          <p class="kbi"><b>Di kantor Anda:</b> aging hutang/piutang, SLA penyelesaian dokumen dalam hari kerja, masa kerja karyawan, dan batas waktu pelaporan bulanan.</p>
+        </div>
+      </div>
+      <div>
+        <div class="block-title">Rumus kunci</div>
+        <div class="formulas">
+          <div class="fm"><div class="fx"><span class="nb">H92</span><span class="ic">fx</span><span class="f">=IF(OR(E92="";F92&lt;&gt;"");"";Kalender_Latihan!$C$5-E92)</span></div>
+            <p class="ex"><b>Umur tagihan</b> = tanggal acuan − jatuh tempo. Dihitung hanya jika ada jatuh tempo <i>dan</i> belum dibayar. Di laporan sungguhan, ganti tanggal acuan dengan <code>TODAY()</code>.</p></div>
+          <div class="fm"><div class="fx"><span class="nb">I92</span><span class="ic">fx</span><span class="f">=EOMONTH(C92;0)</span></div>
+            <p class="ex"><b>EOMONTH</b> menghasilkan akhir bulan dari tanggal tersebut. Isi argumen 0 untuk bulan ini, 1 untuk bulan depan, −1 untuk bulan lalu.</p></div>
+          <div class="fm"><div class="fx"><span class="nb">J92</span><span class="ic">fx</span><span class="f">=IF(D92="";"";NETWORKDAYS(C92;D92;Kalender_Latihan!$B$10:$B$17))</span></div>
+            <p class="ex"><b>NETWORKDAYS</b> menghitung hari Senin–Jumat dan melewati daftar libur di argumen ketiga. Tanggal awal dan akhir ikut dihitung: pesan Senin, kirim Rabu = 3 hari kerja.</p></div>
+          <div class="fm"><div class="fx"><span class="nb">K92</span><span class="ic">fx</span><span class="f">=IF(WEEKDAY(C92;2)&gt;=6;"Akhir pekan";"Hari kerja")</span></div>
+            <p class="ex"><b>WEEKDAY(tgl;2)</b> memberi Senin = 1 sampai Minggu = 7, sehingga ≥ 6 berarti Sabtu atau Minggu.</p></div>
+          <div class="fm"><div class="fx"><span class="nb">L92</span><span class="ic">fx</span><span class="f">=TEXT(C92;"mmm yyyy")</span></div>
+            <p class="ex"><b>TEXT</b> mengubah tanggal menjadi label seperti "Mar 2026" untuk pengelompokan laporan. Hasilnya berupa teks, jadi tidak bisa dihitung lagi.</p></div>
+        </div>
+      </div>
+      <div>
+        <div class="block-title">Jebakan umum</div>
+        <div class="traps">
+          <div class="trap"><span class="pill bad">Salah</span><span>Tanggal kirim kosong dianggap Excel sebagai 0 (1-Jan-1900), sehingga umur tagihan bisa menjadi 46.000 hari. Bungkus dengan <code>IF(sel="";"";…)</code>.</span></div>
+          <div class="trap"><span class="pill bad">Salah</span><span>Hasil pengurangan tanggal tampil sebagai tanggal. Ubah format sel ke <b>General</b> atau <b>Number</b>.</span></div>
+          <div class="trap"><span class="pill ok">Tips</span><span>TODAY() berubah setiap hari. Untuk laporan yang harus bisa diaudit, simpan tanggal cut-off di satu sel tetap.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ S5 ============ -->
+    <section class="session" id="s5">
+      <div class="s-head">
+        <div class="s-meta"><span>Session 5 · 13.00 – 13.40</span><span class="sheet">Latihan_H1 · Data_Mentah · Data_Bersih</span></div>
+        <h2>Text Cleaning &amp; Conditional Formatting</h2>
+        <p>Data dari form, sistem lain, atau hasil copy-paste jarang langsung rapi. Rumus teks merapikannya sekaligus untuk ratusan baris. Conditional Formatting menyorot baris yang perlu ditindaklanjuti.</p>
+      </div>
+      <div class="two">
+        <div class="panel">
+          <div class="block-title">Setelah sesi ini Anda bisa</div>
+          <ul class="lo">
+            <li>Memecah kode referensi gabungan menjadi 3 kolom (TEXTSPLIT, LEFT-MID-FIND, atau Text to Columns).</li>
+            <li>Membersihkan nomor kontak dari tanda <code>-</code>, <code>.</code>, dan spasi dengan SUBSTITUTE + TRIM.</li>
+            <li>Merapikan nama (PROPER) dan menyusun ringkasan dengan TEXTJOIN.</li>
+            <li>Menandai duplikat, tagihan terlambat, dan nilai besar secara otomatis.</li>
+          </ul>
+        </div>
+        <div class="case">
+          <div class="block-title">Studi kasus</div>
+          <h3>Kontak "0830.5808.710" dan nama "pt bintang finansia"</h3>
+          <p>Data pelanggan dari form cabang ditulis dengan gaya yang berbeda-beda. Kode referensi tergabung dalam satu sel, sehingga laporan per segmen dan channel tidak bisa dibuat. Tiga nomor pesanan juga ternyata terinput dua kali.</p>
+          <p class="kbi"><b>Di kantor Anda:</b> data pendaftaran training, daftar kontak vendor, nomor dokumen gabungan, dan deteksi faktur ganda sebelum dibayar.</p>
+        </div>
+      </div>
+
+      <div class="demo" id="demo-split">
+        <div class="demo-h"><span>Coba sendiri: kenapa ada +1 dan −1 di MID?</span><span class="mono">LEFT · MID · FIND</span></div>
+        <div class="demo-b">
+          <label class="field" for="sp-in">Ketik kode gabungan (pisahkan dengan |)<input id="sp-in" value="JKT|CORPORATE|OFFLINE" maxlength="40" autocomplete="off"></label>
+          <div class="chars" id="sp-chars" aria-hidden="true"></div>
+          <div class="out" aria-live="polite">
+            <div>Pos1 = FIND("|";B115)<b id="sp-p1"></b></div>
+            <div>Pos2 = FIND("|";B115;Pos1+1)<b id="sp-p2"></b></div>
+            <div>Cabang = LEFT(B115;Pos1−1)<b id="sp-c"></b></div>
+            <div>Segmen = MID(B115;Pos1+1;Pos2−Pos1−1)<b id="sp-s"></b></div>
+            <div>Channel = MID(B115;Pos2+1;99)<b id="sp-ch"></b></div>
+          </div>
+          <p style="font-size:14px;color:var(--muted)"><b style="color:var(--ink)">Cara mengingat:</b> +1 artinya lompati pagarnya, −1 artinya jangan ikut membawa pagar berikutnya. Sel kuning di atas adalah teks yang diambil MID.</p>
+        </div>
+      </div>
+
+      <div>
+        <div class="block-title">Rumus kunci</div>
+        <div class="formulas">
+          <div class="fm"><div class="fx"><span class="nb">C115</span><span class="ic">fx</span><span class="f">=TEXTSPLIT(B115;"|")</span></div>
+            <p class="ex"><b>Excel 365:</b> satu rumus langsung menumpahkan 3 kolom (spill). Versi lama memakai LEFT/MID/FIND seperti demo di atas, atau Data ▸ Text to Columns ▸ Other "|".</p></div>
+          <div class="fm"><div class="fx"><span class="nb">H116</span><span class="ic">fx</span><span class="f">=SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(TRIM(G116);"-";"");".";"");" ";"")</span></div>
+            <p class="ex"><b>SUBSTITUTE bertumpuk</b> membuang tanda pisah, titik, dan spasi satu per satu. Hasilnya nomor 11–12 digit yang seragam.</p></div>
+          <div class="fm"><div class="fx"><span class="nb">J116</span><span class="ic">fx</span><span class="f">=PROPER(I116)   →   "pt bintang finansia" jadi "Pt Bintang Finansia"</span></div>
+            <p class="ex"><b>PROPER</b> membuat huruf awal setiap kata kapital. Singkatan seperti "Pt" perlu dirapikan lagi dengan SUBSTITUTE jika harus tertulis "PT".</p></div>
+          <div class="fm"><div class="fx"><span class="nb">K116</span><span class="ic">fx</span><span class="f">=TEXTJOIN(" - ";TRUE;"PO-2026-0104";J116;"Maintenance Server (bulan)")</span></div>
+            <p class="ex"><b>TEXTJOIN</b> menggabungkan teks dengan pemisah. <code>TRUE</code> berarti sel kosong dilewati. Di Excel lama, gunakan <code>=A&amp;" - "&amp;B</code>.</p></div>
+          <div class="fm"><div class="fx"><span class="nb">CF</span><span class="ic">fx</span><span class="f">=AND(P6&lt;&gt;"";Q6="";P6&lt;Kalender_Latihan!$C$5)</span></div>
+            <p class="ex"><b>Conditional Formatting berbasis rumus:</b> warnai merah jika sudah ada jatuh tempo, belum dibayar, dan sudah lewat tanggal acuan. Tulis rumus untuk baris pertama tanpa $ di depan nomor baris.</p></div>
+        </div>
+      </div>
+      <div>
+        <div class="block-title">Langkah di file</div>
+        <ol class="steps">
+          <li>Pecah 7 kode referensi menjadi Cabang, Segmen, Channel (7 ✔).</li>
+          <li>Bersihkan kontak, rapikan nama, susun ringkasan TEXTJOIN (7 ✔).</li>
+          <li>Data_Mentah kolom A: Highlight Cells ▸ Duplicate Values. Akan terlihat 3 pasang nomor merah.</li>
+          <li>Data_Bersih P6:P305: New Rule ▸ rumus tagihan terlambat ▸ fill merah.</li>
+          <li>Data_Bersih U6:U305: Greater Than 25.000.000 ▸ hijau.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ S6 ============ -->
+    <section class="session" id="s6">
+      <div class="s-head">
+        <div class="s-meta"><span>Session 6 · 13.40 – 14.10</span><span class="sheet">Lab_Error</span></div>
+        <h2>Lab: Rusakkan &amp; Perbaiki</h2>
+        <p>Cepat membaca error lebih penting daripada hafal banyak rumus. Di sesi ini Anda memperbaiki tiga kasus rusak yang sering muncul di file warisan rekan kerja.</p>
+      </div>
+      <div class="two">
+        <div class="panel">
+          <div class="block-title">Setelah sesi ini Anda bisa</div>
+          <ul class="lo">
+            <li>Membedakan #VALUE!, #NAME?, #REF!, dan "Reference isn't valid" dari pesan dan penyebabnya.</li>
+            <li>Mengubah angka yang tersimpan sebagai teks menjadi angka sungguhan.</li>
+            <li>Memeriksa daftar nama di Formulas ▸ Name Manager.</li>
+          </ul>
+        </div>
+        <div class="case">
+          <div class="block-title">Studi kasus</div>
+          <h3>File laporan dari rekan yang sudah pindah divisi</h3>
+          <p>Laporan harus terkirim hari ini, tetapi beberapa sel menampilkan error dan tombol menu tidak bisa diklik. Tidak ada orang yang bisa ditanya, jadi Anda harus bisa mendiagnosis sendiri.</p>
+          <p class="kbi"><b>Di kantor Anda:</b> template turun-temurun, file export dari sistem yang angkanya terbaca sebagai teks, dan workbook yang sheet-nya pernah di-rename atau dihapus.</p>
+        </div>
+      </div>
+      <div class="tblwrap">
+        <table>
+          <thead><tr><th>Gejala</th><th>Contoh rusak</th><th>Penyebab</th><th>Perbaikan</th></tr></thead>
+          <tbody>
+            <tr><td><span class="pill bad">#VALUE!</span></td><td class="t">=C8*D8</td><td>Isinya "12 pcs" dan "Rp52.000", berupa teks dan bukan angka</td><td><code>=VALUE(SUBSTITUTE(C8;" pcs";""))*VALUE(SUBSTITUTE(SUBSTITUTE(D8;"Rp";"");".";""))</code>. Cara terbaik: ketik ulang sumbernya sebagai angka murni.</td></tr>
+            <tr><td><span class="pill bad">#NAME?</span></td><td class="t">=SUMM(…)</td><td>Nama fungsi salah ketik</td><td><code>=SUM(…)</code>. Rumus yang ditulis dengan huruf kecil semua adalah tanda Excel tidak mengenali fungsinya.</td></tr>
+            <tr><td><span class="pill bad">#NAME?</span></td><td class="t">=C14+termin</td><td>Named range "Termin" tidak ada. Yang ada <i>TerminHari</i></td><td><code>=C14+TerminHari</code>. Cek di Name Manager.</td></tr>
+            <tr><td><span class="pill bad">Reference isn't valid</span></td><td class="t">#'Data Bersih'!A1</td><td>Nama sheet tujuan salah (memakai spasi, seharusnya underscore)</td><td><code>=HYPERLINK("#'Data_Bersih'!A1";"▶ Data Bersih")</code></td></tr>
+            <tr><td><span class="pill bad">#REF!</span></td><td class="t">Kalender_Latihan dihapus</td><td>Sheet yang dirujuk rumus sudah tidak ada</td><td>Undo (Ctrl+Z). Referensi ke sheet yang terhapus tidak bisa dipulihkan.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ============ CHEAT SHEET ============ -->
+    <section class="session" id="cheatsheet">
+      <div class="s-head">
+        <div class="s-meta"><span class="sheet">Simpan &amp; buka kapan saja</span></div>
+        <h2>Cheat Sheet: shortcut &amp; fungsi yang dipakai terus</h2>
+        <p>Klik salah satu shortcut, lalu tombolnya akan menyala di gambar keyboard. Semua shortcut untuk Excel di Windows. Di Mac, ganti <kbd>Ctrl</kbd> dengan <kbd>⌘ Cmd</kbd> untuk sebagian besar shortcut.</p>
+      </div>
+
+      <div class="kb-panel">
+        <div class="kb-cap" id="kb-cap" aria-live="polite"></div>
+        <div class="kb-scroll"><div class="kb" id="kb" aria-hidden="true"></div></div>
+      </div>
+
+      <div class="sc-groups" id="sc-groups"></div>
+
+      <div>
+        <div class="block-title">Kunci referensi dengan F4 (tekan berulang)</div>
+        <div class="f4">
+          <div><b>A1</b>Relatif: baris &amp; kolom ikut bergeser saat di-copy</div>
+          <div><b>$A$1</b>Absolut: terkunci total, cocok untuk tarif atau parameter</div>
+          <div><b>A$1</b>Kunci baris: header di atas tabel</div>
+          <div><b>$A1</b>Kunci kolom: kunci NIK/ID di kiri</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="block-title">Fungsi yang paling sering dipakai</div>
+        <div class="cards">
+          <div class="fcard"><h3>Cari data</h3><dl>
+            <dt>=XLOOKUP(cari;kolom_cari;kolom_hasil;"-")</dt><dd>Excel 365/2021. Bisa mencari ke kiri dan punya nilai default jika tidak ketemu.</dd>
+            <dt>=INDEX(hasil;MATCH(cari;kolom_cari;0))</dt><dd>Berjalan di semua versi dan tidak rusak saat kolom disisipkan.</dd>
+            <dt>=VLOOKUP(cari;tabel;no_kolom;FALSE)</dt><dd>FALSE = harus persis sama. TRUE = mencari rentang (tabel harus urut naik).</dd>
+          </dl></div>
+          <div class="fcard"><h3>Hitung bersyarat</h3><dl>
+            <dt>=SUMIFS(jumlah;kolom1;syarat1;…)</dt><dd>Jumlahkan dengan satu atau banyak syarat.</dd>
+            <dt>=COUNTIFS(kolom1;syarat1;…)</dt><dd>Hitung baris yang memenuhi semua syarat.</dd>
+            <dt>=AVERAGEIFS(nilai;kolom1;syarat1)</dt><dd>Rata-rata bersyarat. Bungkus dengan IFERROR jika bisa kosong.</dd>
+            <dt>"&gt;="&amp;B1 · "*kata*" · "&lt;&gt;"</dt><dd>Syarat bisa memakai operator, sel, atau wildcard (* = teks apa saja).</dd>
+          </dl></div>
+          <div class="fcard"><h3>Logika</h3><dl>
+            <dt>=IF(syarat;jika_ya;jika_tidak)</dt><dd>Keputusan dua arah.</dd>
+            <dt>=IFS(s1;h1;s2;h2;TRUE;lainnya)</dt><dd>Banyak tingkat, dicek dari atas.</dd>
+            <dt>AND(…) · OR(…) · NOT(…)</dt><dd>AND = semua benar, OR = salah satu benar.</dd>
+            <dt>=IFERROR(rumus;0) · =IFNA(rumus;"-")</dt><dd>Ganti tampilan error. IFNA lebih aman untuk lookup.</dd>
+          </dl></div>
+          <div class="fcard"><h3>Teks</h3><dl>
+            <dt>TRIM · PROPER · UPPER · LOWER</dt><dd>Buang spasi berlebih dan rapikan huruf besar/kecil.</dd>
+            <dt>LEFT · RIGHT · MID · LEN · FIND</dt><dd>Ambil sebagian teks berdasarkan posisi karakter.</dd>
+            <dt>=SUBSTITUTE(teks;"-";"")</dt><dd>Ganti atau hapus karakter tertentu.</dd>
+            <dt>=TEXTJOIN(", ";TRUE;range) · A1&amp;" "&amp;B1</dt><dd>Gabungkan teks.</dd>
+          </dl></div>
+          <div class="fcard"><h3>Tanggal</h3><dl>
+            <dt>=TODAY() · =NOW()</dt><dd>Tanggal (dan jam) hari ini, berubah otomatis.</dd>
+            <dt>=EOMONTH(tgl;0) · =EDATE(tgl;3)</dt><dd>Akhir bulan · tanggal 3 bulan kemudian.</dd>
+            <dt>=NETWORKDAYS(awal;akhir;libur)</dt><dd>Hari kerja, Senin–Jumat dikurangi libur.</dd>
+            <dt>=DATEDIF(awal;akhir;"m")</dt><dd>Selisih dalam "y" tahun, "m" bulan, atau "d" hari, misalnya masa kerja.</dd>
+          </dl></div>
+          <div class="fcard"><h3>Angka &amp; Excel 365</h3><dl>
+            <dt>=ROUND(x;0) · ROUNDUP · ROUNDDOWN</dt><dd>Bulatkan. Angka −3 berarti bulatkan ke ribuan.</dd>
+            <dt>=SUBTOTAL(109;range)</dt><dd>Jumlah yang mengikuti filter (baris tersembunyi diabaikan).</dd>
+            <dt>=UNIQUE(range) · =SORT(range)</dt><dd>Daftar unik dan urutan otomatis (spill).</dd>
+            <dt>=FILTER(range;syarat;"-")</dt><dd>Ambil baris yang memenuhi syarat ke area baru.</dd>
+          </dl></div>
+        </div>
+      </div>
+
+      <div class="two">
+        <div>
+          <div class="block-title">Kode format angka (Ctrl+1 ▸ Custom)</div>
+          <div class="tblwrap"><table>
+            <thead><tr><th>Kode</th><th>Contoh hasil</th></tr></thead>
+            <tbody>
+              <tr><td class="t">"Rp"#,##0</td><td>Rp1.250.000</td></tr>
+              <tr><td class="t">#,##0,,"jt"</td><td>1.250.000.000 → 1.250jt</td></tr>
+              <tr><td class="t">0.0%</td><td>0,153 → 15,3%</td></tr>
+              <tr><td class="t">dd-mmm-yyyy</td><td>30-Jun-2026</td></tr>
+              <tr><td class="t">dddd</td><td>Selasa (nama hari)</td></tr>
+              <tr><td class="t">0 "pcs"</td><td>12 → 12 pcs (tetap angka)</td></tr>
+              <tr><td class="t">[h]:mm</td><td>Total jam lebih dari 24, misalnya 37:30</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+        <div>
+          <div class="block-title">Arti pesan error</div>
+          <div class="tblwrap"><table>
+            <thead><tr><th>Error</th><th>Biasanya karena</th></tr></thead>
+            <tbody>
+              <tr><td><span class="pill bad">#N/A</span></td><td>Data yang dicari tidak ditemukan</td></tr>
+              <tr><td><span class="pill bad">#VALUE!</span></td><td>Menghitung teks sebagai angka</td></tr>
+              <tr><td><span class="pill bad">#NAME?</span></td><td>Nama fungsi atau named range salah ketik</td></tr>
+              <tr><td><span class="pill bad">#REF!</span></td><td>Sel atau sheet yang dirujuk sudah dihapus</td></tr>
+              <tr><td><span class="pill bad">#DIV/0!</span></td><td>Pembagian dengan nol atau sel kosong</td></tr>
+              <tr><td><span class="pill bad">#SPILL!</span></td><td>Area hasil rumus 365 terhalang data lain</td></tr>
+              <tr><td><span class="pill bad">#####</span></td><td>Kolom terlalu sempit. Double-click garis kolom.</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CLOSING ============ -->
+    <section class="session" id="closing">
+      <div class="s-head">
+        <div class="s-meta"><span>Closing · 14.10 – 15.00</span><span class="sheet">Latihan_H1 · Petunjuk</span></div>
+        <h2>Closing: 12 pesanan mentah, 25 menit</h2>
+        <p>Semua yang dipelajari hari ini dipakai dalam satu tugas. Data mentah diubah menjadi bersih, valid, berstatus, dan bisa dinavigasi.</p>
+      </div>
+      <div class="two">
+        <div>
+          <div class="block-title">Checklist integrasi</div>
+          <ol class="steps">
+            <li>Cabang: perbaiki lewat dropdown <span class="pill in">S1</span></li>
+            <li>Nama rapi: <code>=PROPER(D141)</code> <span class="pill in">S5</span></li>
+            <li>Kontak bersih: <code>=SUBSTITUTE(F141;"-";"")</code> <span class="pill in">S5</span></li>
+            <li>Nilai Bersih: <code>=H141*I141*(1-J141)</code> <span class="pill in">S1</span></li>
+            <li>Lunas: <code>=IF(L141&lt;&gt;"";"Lunas";"Belum")</code> <span class="pill in">S3</span></li>
+            <li>Flag: <code>=IF(OR(J141&gt;0,15;AND(M141&gt;25000000;K141&lt;&gt;"Disetujui"));"Periksa";"OK")</code> <span class="pill in">S3</span></li>
+            <li>Link "◀ Kembali ke Menu" di B1 <span class="pill in">S2</span></li>
+          </ol>
+        </div>
+        <div class="case">
+          <div class="block-title">Bawa pulang ke pekerjaan</div>
+          <h3>Pola 4 langkah untuk data apa pun</h3>
+          <p><b>1. Kunci input</b> dengan Table dan Data Validation.<br><b>2. Rapikan</b> dengan rumus teks, bukan diketik ulang.<br><b>3. Beri status</b> dengan IF/AND/OR sesuai kebijakan tertulis.<br><b>4. Sorot</b> yang perlu tindakan dengan Conditional Formatting, lalu sediakan navigasi agar mudah dipakai orang lain.</p>
+        </div>
+      </div>
+
+      <div>
+        <div class="block-title">Latihan post-test: klik jawaban Anda</div>
+        <div class="quiz" id="quiz"></div>
+        <p class="score" id="quiz-score" style="margin-top:10px"></p>
+      </div>
+
+      <div>
+        <div class="block-title">Versi Excel yang dibutuhkan</div>
+        <div class="tblwrap">
+          <table>
+            <thead><tr><th>Fungsi</th><th>Versi minimum</th><th>Alternatif</th></tr></thead>
+            <tbody>
+              <tr><td class="t">TEXTSPLIT</td><td>Excel 365 (2022+)</td><td>Text to Columns, atau LEFT/MID/FIND</td></tr>
+              <tr><td class="t">IFS, TEXTJOIN</td><td>Excel 2019 / 365</td><td>IF bersarang · <code>=A&amp;" - "&amp;B</code></td></tr>
+              <tr><td class="t">IFNA</td><td>Excel 2013+</td><td>IFERROR</td></tr>
+              <tr><td class="t">IF, AND, OR, IFERROR, EOMONTH, NETWORKDAYS, WEEKDAY, TEXT, SUBSTITUTE, PROPER, HYPERLINK</td><td>Excel 2007+</td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer>
+  <div class="wrap">Modul peserta Hari 1 · Microsoft Excel for Professional, Intermediate Class · PT Kliring Berjangka Indonesia. Seluruh data OfficeMart di file latihan bersifat fiktif.</div>
+</footer>
+
+<script>
+(function(){
+  // ---------- demo logika ----------
+  const $ = id => document.getElementById(id);
+  const rp = n => "Rp" + Math.round(n).toLocaleString("id-ID");
+  function logic(){
+    const v = Number($("lg-nilai").value) || 0;
+    const d = (Number($("lg-disk").value) || 0) / 100;
+    const st = $("lg-status").value, kirim = $("lg-telat").value, bayar = $("lg-bayar").value;
+    $("o-lunas").textContent = bayar ? "Lunas" : "Belum";
+    $("o-and").textContent = (v > 25000000 && st !== "Disetujui") ? "Ya" : "Tidak";
+    $("o-or").textContent = (d > 0.15 || kirim === "telat") ? "Periksa" : "OK";
+    $("o-ifs").textContent = (v < 5000000 ? "Kecil" : v <= 25000000 ? "Sedang" : "Besar") + "  (" + rp(v) + ")";
+  }
+  ["lg-nilai","lg-disk","lg-status","lg-telat","lg-bayar"].forEach(id => $(id).addEventListener("input", logic));
+  logic();
+
+  // ---------- demo split ----------
+  function split(){
+    const s = $("sp-in").value;
+    const p1 = s.indexOf("|") + 1;               // FIND 1-based
+    const p2 = p1 ? s.indexOf("|", p1) + 1 : 0;  // FIND mulai Pos1+1
+    const box = $("sp-chars"); box.textContent = "";
+    [...s].forEach((c, i) => {
+      const pos = i + 1, el = document.createElement("span");
+      el.className = "ch" + (c === "|" ? " pipe" : (p1 && p2 && pos > p1 && pos < p2 ? " seg" : ""));
+      const b = document.createElement("b"); b.textContent = c === " " ? "␣" : c;
+      const n = document.createElement("i"); n.textContent = pos;
+      el.append(b, n); box.append(el);
+    });
+    const err = "#VALUE!";
+    $("sp-p1").textContent = p1 || err;
+    $("sp-p2").textContent = p2 || err;
+    $("sp-c").textContent = p1 ? (s.slice(0, p1 - 1) || '""') : err;
+    $("sp-s").textContent = p1 && p2 ? `MID(;${p1}+1;${p2}−${p1}−1) = "${s.slice(p1, p2 - 1)}"` : err;
+    $("sp-ch").textContent = p2 ? (s.slice(p2) || '""') : err;
+  }
+  $("sp-in").addEventListener("input", split); split();
+
+  // ---------- quiz ----------
+  const Q = [
+    ["Shortcut mengubah range menjadi Excel Table…", ["Ctrl+1","Ctrl+T","Ctrl+L","Ctrl+E"], 1],
+    ["Agar Jumlah hanya bisa diisi bilangan bulat > 0, gunakan…", ["Conditional Formatting","Data Validation","Freeze Panes","Filter"], 1],
+    ["Rumus tautan ke sel A1 sheet Master…", ['=LINK("Master")', "=HYPERLINK(\"#'Master'!A1\";\"Master\")", "=GOTO(Master!A1)", '=HYPERLINK("Master")'], 1],
+    ["Fungsi yang mengembalikan nilai lain hanya saat #N/A…", ["IFERROR","IFNA","ISERROR","IFS"], 1],
+    ["Dua syarat harus terpenuhi sekaligus…", ["OR","AND","NOT","XOR"], 1],
+    ["Hari kerja antara dua tanggal, mengecualikan libur…", ["DAYS","NETWORKDAYS","WEEKDAY","EOMONTH"], 1],
+    ["Memisahkan 'JKT|CORPORATE|ONLINE' menjadi 3 kolom tanpa rumus…", ["Flash Fill saja","Text to Columns","Remove Duplicates","Sort"], 1],
+    ["Error #NAME? paling sering disebabkan…", ["Pembagi nol","Nama fungsi salah ketik","Kolom sempit","Sheet terhapus"], 1],
+  ];
+  const quiz = $("quiz"), answered = new Map();
+  function score(){
+    const right = [...answered.values()].filter(Boolean).length;
+    $("quiz-score").textContent = answered.size ? `Skor: ${right} / ${Q.length} benar · ${Q.length - answered.size} soal belum dijawab` : "Pilih satu jawaban di setiap soal. Jawaban langsung dinilai.";
+  }
+  Q.forEach(([q, opts, ok], qi) => {
+    const box = document.createElement("div"); box.className = "q";
+    const p = document.createElement("p"); p.textContent = (qi + 1) + ". " + q;
+    const wrap = document.createElement("div"); wrap.className = "opts";
+    opts.forEach((o, oi) => {
+      const b = document.createElement("button"); b.type = "button"; b.textContent = "ABCD"[oi] + ". " + o;
+      b.addEventListener("click", () => {
+        if (answered.has(qi)) return;
+        answered.set(qi, oi === ok);
+        b.classList.add(oi === ok ? "right" : "wrong");
+        wrap.children[ok].classList.add("right");
+        score();
+      });
+      wrap.append(b);
+    });
+    box.append(p, wrap); quiz.append(box);
+  });
+  score();
+
+  // ---------- cheat sheet: keyboard ----------
+  const R = (s) => s.split(" ").map(k => { const [id, lab, w] = k.split("|"); return {id, lab: lab || id.toUpperCase(), w: Number(w) || 1}; });
+  const MAIN = [
+    R("esc|Esc _|_|0.6 f1|F1 f2|F2 f3|F3 f4|F4 _|_|0.3 f5|F5 f6|F6 f7|F7 f8|F8 _|_|0.3 f9|F9 f10|F10 f11|F11 f12|F12"),
+    R("grave|` 1|1 2|2 3|3 4|4 5|5 6|6 7|7 8|8 9|9 0|0 minus|- eq|= bksp|⌫|2"),
+    R("tab|Tab|1.5 q w e r t y u i o p lbr|[ rbr|] bsl|\\|1.5"),
+    R("caps|Caps|1.75 a s d f g h j k l semi|; quote|' enter|Enter|2.25"),
+    R("shift|Shift|2.25 z x c v b n m comma|, dot|. slash|/ shiftr|Shift|2.75"),
+    R("ctrl|Ctrl|1.5 win|Win|1.25 alt|Alt|1.25 space|Spasi|6.25 altr|Alt|1.25 menu|☰|1.25 ctrlr|Ctrl|1.5"),
+  ];
+  const SIDE = [
+    R("_|_ _|_ _|_"), R("home|Home pgup|PgUp"), R("end|End pgdn|PgDn"), R("_|_"), R("up|↑"), R("left|← down|↓ right|→"),
+  ];
+  const kb = $("kb");
+  function board(rows, cls){
+    const g = document.createElement("div"); g.className = cls;
+    rows.forEach((row, ri) => {
+      const r = document.createElement("div"); r.className = "kb-row" + (cls === "kb-main" && ri === 0 ? " fn" : "");
+      row.forEach(k => { const e = document.createElement("span"); e.className = "key" + (k.id === "_" ? " gap" : ""); e.style.setProperty("--w", k.w); e.textContent = k.lab === "_" ? "" : k.lab; if (k.id !== "_") e.dataset.k = k.id; r.append(e); });
+      g.append(r);
+    });
+    kb.append(g);
+  }
+  board(MAIN, "kb-main"); board(SIDE, "kb-side");
+
+  const TOK = {"Ctrl":"ctrl","Shift":"shift","Alt":"alt","Enter":"enter","Spasi":"space","Tab":"tab","Esc":"esc","Home":"home","End":"end","PgUp":"pgup","PgDn":"pgdn",
+    "↑":"up","↓":"down","←":"left","→":"right",";":"semi","`":"grave","=":"eq","+":"eq","-":"minus","$":"4","%":"5","[":"lbr"};
+  const ids = t => t === "Panah" ? ["up","down","left","right"] : [TOK[t] || t.toLowerCase()];
+  const SC = [
+    ["Navigasi", [
+      ["Ctrl Panah", "Lompat ke ujung blok data"],
+      ["Ctrl Home", "Ke sel A1"],
+      ["Ctrl End", "Ke sel terakhir yang berisi data"],
+      ["Ctrl PgDn", "Pindah ke sheet berikutnya (PgUp: sebelumnya)"],
+      ["Ctrl G", "Go To, lompat ke sel atau named range"],
+      ["Ctrl F", "Cari teks"],
+      ["Ctrl H", "Cari & ganti (Replace)"],
+    ]],
+    ["Memilih (seleksi)", [
+      ["Ctrl Shift Panah", "Blok sampai ujung data"],
+      ["Ctrl A", "Pilih seluruh tabel atau sheet"],
+      ["Shift Spasi", "Pilih satu baris penuh"],
+      ["Ctrl Spasi", "Pilih satu kolom penuh"],
+      ["Shift Panah", "Perluas seleksi satu sel"],
+    ]],
+    ["Mengisi & mengedit", [
+      ["F2", "Edit isi sel tanpa double-click"],
+      ["Ctrl Enter", "Isi semua sel terpilih sekaligus"],
+      ["Ctrl D", "Copy sel di atas ke bawah (Fill Down)"],
+      ["Ctrl R", "Copy sel di kiri ke kanan (Fill Right)"],
+      ["Ctrl E", "Flash Fill, Excel meniru pola contoh"],
+      ["Alt Enter", "Baris baru di dalam satu sel"],
+      ["Ctrl ;", "Isi tanggal hari ini (statis)"],
+      ["Ctrl Alt V", "Paste Special (nilai saja, format, transpose)"],
+      ["Ctrl +", "Sisipkan baris/kolom (dengan Shift di keyboard laptop)"],
+      ["Ctrl -", "Hapus baris/kolom"],
+      ["Ctrl Z", "Undo · Ctrl+Y untuk Redo"],
+    ]],
+    ["Format", [
+      ["Ctrl 1", "Format Cells (angka, tanggal, custom)"],
+      ["Ctrl Shift $", "Format mata uang"],
+      ["Ctrl Shift %", "Format persen"],
+      ["Ctrl B", "Tebal · Ctrl+I miring · Ctrl+U garis bawah"],
+      ["Alt H O I", "AutoFit lebar kolom (tekan berurutan)", true],
+      ["Ctrl Shift L", "Pasang atau lepas filter"],
+    ]],
+    ["Rumus", [
+      ["F4", "Kunci referensi: A1 → $A$1 → A$1 → $A1"],
+      ["Alt =", "AutoSum otomatis"],
+      ["Ctrl `", "Tampilkan semua rumus di sheet"],
+      ["F9", "Saat edit rumus: lihat hasil bagian yang diblok"],
+      ["Ctrl [", "Lompat ke sel sumber rumus"],
+      ["Shift F3", "Insert Function (bantuan argumen)"],
+      ["Tab", "Terima saran nama fungsi saat mengetik"],
+    ]],
+    ["Data, Table & file", [
+      ["Ctrl T", "Ubah range menjadi Excel Table"],
+      ["Alt ↓", "Buka dropdown (filter / Data Validation)"],
+      ["Alt A V V", "Buka Data Validation (berurutan)", true],
+      ["Ctrl K", "Sisipkan hyperlink"],
+      ["F11", "Buat chart dari data terpilih"],
+      ["Alt W F F", "Freeze Panes (berurutan)", true],
+      ["Ctrl S", "Simpan · F12 Save As"],
+    ]],
+  ];
+  const cap = $("kb-cap"), groups = $("sc-groups");
+  const keyHTML = (toks, seq) => toks.map(t => `<kbd>${t === "Spasi" ? "Spasi" : t.replace("<","&lt;")}</kbd>`).join(`<span class="kplus">${seq ? "›" : "+"}</span>`);
+  let active = null;
+  function show(btn, toks, desc, seq){
+    document.querySelectorAll(".key.on").forEach(k => k.classList.remove("on"));
+    toks.flatMap(ids).forEach(id => kb.querySelectorAll(`[data-k="${id}"]`).forEach(k => k.classList.add("on")));
+    cap.innerHTML = keyHTML(toks, seq) + `<span>${desc}${seq ? " · tekan satu per satu, bukan bersamaan" : ""}</span>`;
+    if (active) active.classList.remove("on"); active = btn; btn.classList.add("on");
+  }
+  let first = null;
+  SC.forEach(([title, items]) => {
+    const g = document.createElement("div"); g.className = "sc-group";
+    const h = document.createElement("h3"); h.textContent = title; g.append(h);
+    items.forEach(([k, desc, seq]) => {
+      const toks = k.split(" ");
+      const b = document.createElement("button"); b.type = "button"; b.className = "sc";
+      b.innerHTML = `<span class="keys">${keyHTML(toks, seq)}</span><span></span>`;
+      b.lastChild.textContent = desc;
+      const go = () => show(b, toks, desc, seq);
+      b.addEventListener("click", go); b.addEventListener("mouseenter", go); b.addEventListener("focus", go);
+      g.append(b);
+      if (!first && k === "Ctrl T") first = go;
+    });
+    groups.append(g);
+  });
+  first && first();
+
+  // ---------- index highlight ----------
+  const links = [...document.querySelectorAll(".index a")];
+  const map = new Map(links.map(a => [a.getAttribute("href").slice(1), a]));
+  if ("IntersectionObserver" in window){
+    const io = new IntersectionObserver(es => {
+      es.forEach(e => { if (e.isIntersecting){ links.forEach(l => l.classList.remove("on")); const a = map.get(e.target.id); if (a){ a.classList.add("on"); } } });
+    }, { rootMargin: "-30% 0px -60% 0px" });
+    document.querySelectorAll("main > section").forEach(s => io.observe(s));
+  }
+})();
+</script>
+
+</body>
+</html>
